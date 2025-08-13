@@ -68,9 +68,10 @@ php artisan db:seed
 
 ### 8. Integrate Postman for handling APIs.
 
-[Here](https://github.com/jeddsaliba/) is the [postman](https://www.postman.com) collection. Just import it and you're all set!
+[Here](https://github.com/jeddsaliba/laravel-translation-service/docs/postman/Laravel_Translation_Service_API.postman_collection.json) is the [postman](https://www.postman.com) collection. Just import it and you're all set!
 
 ### 9. When logging in, you may use the following credentials:
-
+```bash
 Email: admin@admin.com
 Password: password
+```
