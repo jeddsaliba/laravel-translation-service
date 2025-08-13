@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             LocaleSeeder::class,
             TagSeeder::class,
+            TranslationSeeder::class,
         ]);
     }
 }

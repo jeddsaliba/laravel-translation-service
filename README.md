@@ -69,3 +69,8 @@ php artisan db:seed
 ### 8. Integrate Postman for handling APIs.
 
 [Here](https://github.com/jeddsaliba/) is the [postman](https://www.postman.com) collection. Just import it and you're all set!
+
+### 9. When logging in, you may use the following credentials:
+
+Email: admin@admin.com
+Password: password

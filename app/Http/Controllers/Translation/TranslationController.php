@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Locale;
 use App\Models\Tag;
 use App\Models\Translation;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -39,9 +40,13 @@ class TranslationController extends Controller
 
         $result = [];
 
-        $translations->each(function ($translation) use (&$result) {
-            if ($translation->tags()->get()->isNotEmpty()) {
-                $translation->tags()->get()->each(function ($tag) use (&$result, $translation) {
+        $translations->each(function ($translation) use (&$result, $request) {
+            $tag = $translation->tags()->when($request->tags, function (Builder $query) use ($request) {
+                $tags = explode(',', $request->tags);
+                $query->whereIn('tags.name', $tags);
+            })->get();
+            if ($tag->isNotEmpty()) {
+                $tag->each(function ($tag) use (&$result, $translation) {
                     $result["{$tag->name}.{$translation->key}"] = $translation->value;
                 });
             } else {
