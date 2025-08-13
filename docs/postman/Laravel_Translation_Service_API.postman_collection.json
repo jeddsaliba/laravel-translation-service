@@ -30,7 +30,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "kmoen@example.net",
+									"value": "admin@admin.com",
 									"description": "The email address of the user.",
 									"type": "text"
 								},
@@ -218,7 +218,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{URL}}/api/translations/:locale?key=hello&tags=web",
+							"raw": "{{URL}}/api/translations/:locale?key=morning&tags=web",
 							"host": [
 								"{{URL}}"
 							],
@@ -230,7 +230,7 @@
 							"query": [
 								{
 									"key": "key",
-									"value": "hello"
+									"value": "morning"
 								},
 								{
 									"key": "tags",
@@ -324,7 +324,7 @@
 							"formdata": [
 								{
 									"key": "key",
-									"value": "morning",
+									"value": "night",
 									"type": "text"
 								},
 								{
@@ -334,18 +334,20 @@
 								},
 								{
 									"key": "value",
-									"value": "umaga",
+									"value": "gabi",
 									"type": "text"
 								},
 								{
 									"key": "tags[]",
 									"value": "mobile",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "tags[]",
 									"value": "web",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -404,7 +406,7 @@
 								},
 								{
 									"key": "value",
-									"value": "umaga",
+									"value": "Good morning",
 									"type": "text"
 								},
 								{
@@ -427,7 +429,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "1"
 								}
 							]
 						},
@@ -469,6 +471,270 @@
 							"path": [
 								"api",
 								"translations",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "**API Request Description**\n\nThis endpoint allows users to log in by providing their email and password in the request body.\n\n**Request**\n\n- Form Data:\n    \n    - `email` (text): The email address of the user.\n        \n    - `password` (text): The password for the user's account.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"success\": \"boolean\",\n  \"message\": \"string\",\n  \"token\": \"string\"\n}\n\n ```\n\nThe response contains the `token` which is a string representing the authentication token."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Locales",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/locales",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"locales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/locales/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"locales",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "en",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "English",
+									"type": "text"
+								},
+								{
+									"key": "direction",
+									"value": "LTR",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/locales",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"locales"
+							]
+						},
+						"description": "**API Request Description**\n\nThis endpoint allows users to log in by providing their email and password in the request body.\n\n**Request**\n\n- Form Data:\n    \n    - `email` (text): The email address of the user.\n        \n    - `password` (text): The password for the user's account.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"success\": \"boolean\",\n  \"message\": \"string\",\n  \"token\": \"string\"\n}\n\n ```\n\nThe response contains the `token` which is a string representing the authentication token."
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "code",
+									"value": "en",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "English",
+									"type": "text"
+								},
+								{
+									"key": "direction",
+									"value": "LTR",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/locales/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"locales",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "**API Request Description**\n\nThis endpoint allows users to log in by providing their email and password in the request body.\n\n**Request**\n\n- Form Data:\n    \n    - `email` (text): The email address of the user.\n        \n    - `password` (text): The password for the user's account.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"success\": \"boolean\",\n  \"message\": \"string\",\n  \"token\": \"string\"\n}\n\n ```\n\nThe response contains the `token` which is a string representing the authentication token."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/locales/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"locales",
 								":id"
 							],
 							"variable": [

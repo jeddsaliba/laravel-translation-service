@@ -38,6 +38,7 @@ class AuthController extends Controller
             'message' => 'Welcome, ' . $user->name . '!',
             'token' => $token,
             'token_type' => 'Bearer',
+            'data' => $user
         ]);
     }
     
@@ -62,6 +63,6 @@ class AuthController extends Controller
      */
     public function profile(Request $request)
     {
-        return response()->json($request->user());
+        return response()->json(['data' => $request->user()]);
     }
 }
