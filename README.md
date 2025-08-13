@@ -75,3 +75,5 @@ php artisan db:seed
 Email: admin@admin.com
 Password: password
 ```
+
+### 10. Follow the full documentation [here](https://github.com/jeddsaliba/laravel-translation-service/wiki/1-How-To-Use#table-of-contents)
